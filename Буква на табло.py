@@ -16,7 +16,7 @@ def whos_that_pokemon(tab):
     else:
         return 'X'
 
-
+#commit
 
 def i_check(tab):
     l, r = tab[0].find('#'), tab[0].rfind('#')

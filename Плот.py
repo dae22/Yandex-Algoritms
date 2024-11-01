@@ -23,3 +23,5 @@ with open('input.txt', 'r', encoding='UTF-8') as f:
 
 with open('output.txt', 'w', encoding='UTF-8') as f1:
     f1.write(NS(c[1], c[3], c[5]) + WE(c[0], c[2], c[4]))
+
+    # commit

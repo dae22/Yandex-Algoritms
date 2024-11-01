@@ -21,3 +21,5 @@ with open('input.txt', 'r', encoding='UTF-8') as f:
 
 with open('output.txt', 'w', encoding='UTF-8') as f1:
     f1.write(f'{r_and_blue(data)[0]} {r_and_blue(data)[1]}')
+
+#commit
