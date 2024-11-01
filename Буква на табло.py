@@ -17,6 +17,7 @@ def whos_that_pokemon(tab):
         return 'X'
 
 
+
 def i_check(tab):
     l, r = tab[0].find('#'), tab[0].rfind('#')
     for row in tab:
