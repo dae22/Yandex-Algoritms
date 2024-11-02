@@ -1,15 +1,16 @@
 n = int(input())
 num = list(map(int, input().split()))
 
-pref =  [0] * (n-1)
+pref =  [0] * (n+1)
+for i in range(1, n+1):
+    pref[i] = num[i-1] + num[i-1]
+
 s = 0
-for i in  range(0, n-1):
-    pref[i]= num[i] * num[i+1]
-for i in range(len(pref)):
-    s += pref[i] * num[i]
+for i in range(n, -1, -1):
+    
 
 print(pref)
-print(s)
+
 
 
 
