@@ -1,13 +1,26 @@
-from functools import reduce
-from math import prod
-
 n = int(input())
 cab = list(map(int, input().split()))
-# with open('input.txt', 'r') as f:
-#     n = int(f.readline().rstrip())
-#     cab = list(map(int, f.readline().rstrip().split()))
 
-print(cab)
+pref = [0] * n
+p = cab[0]
+for i in range(1, n):
+    pref[i] = pref[i-1] + p
+    p += cab[i]
+
+pref1 = [0] * n
+p = cab[-1]
+for i in range (-2, -n-1, -1):
+    pref1[i] = pref1[i+1] + p
+    p += cab[i]
+
+fnl = list(map(lambda x, y: x+y, pref, pref1 ))
+print(min(fnl))
+
+
+
+
+
+
 
 # m = 99999999999999999999999
 # for i in range(n):
@@ -19,3 +32,5 @@ print(cab)
 #                 break
 #     m = min(m, s)
 # print(m)
+
+
