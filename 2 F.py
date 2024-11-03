@@ -1,18 +1,17 @@
 n = int(input())
 num = list(map(int, input().split()))
-
-pref =  [0] * (n+1)
-for i in range(1, n+1):
-    pref[i] = num[i-1] + num[i-1]
-
 s = 0
-for i in range(n, -1, -1):
-    
+pref = [0]*(n-2)
+
+for i in range(0, n-2):
+    pref[i] = num[i+1] * sum(num[i+2:])
+
+for i in range(n):
+    s += num[i] * sum(pref[i:])
+
+print(s % 1000000007)
 
 print(pref)
-
-
-
 
 
 # from itertools import combinations
