@@ -5,15 +5,13 @@ for i in range(1, n):
     pref[i] = chairs[i][0] - chairs[i-1][0]
 
 dis_m = 10000000000
-mid = []
 dis = []
 w, r, ld = 0, 0, 0
 for i in range(n):
-    while ld > 0 and i >= dis[0][0]:
+    if ld > 0 and i >= dis[0][0]:
         dis.pop(0)
         ld -= 1
     while w < H and r < n:
-        mid.append(chairs[r][1])
         if ld == 0:
             dis.append([r, pref[r]])
             ld += 1
@@ -34,6 +32,5 @@ for i in range(n):
         else:
             dis_c = dis[0][1]
         dis_m = min(dis_m, dis_c)
-    w -= mid[0]
-    mid.pop(0)
+    w -= chairs[i][1]
 print(dis_m)
