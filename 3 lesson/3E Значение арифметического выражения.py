@@ -57,7 +57,8 @@ for i in range(len(ex)):
         else:
             flag = False
             break
-
+if open > 0:
+    flag = False
 for el in reversed(stack):
     postfix.append(el)
 
