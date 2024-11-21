@@ -1,21 +1,9 @@
-PRINTTREE
-SEARCH 6
-ADD 7
-ADD 3
-ADD 9
-ADD 2
-ADD 1
-ADD 5
-ADD 4
-ADD 6
-ADD 8
-PRINTTREE
-SEARCH 1
-SEARCH 2
-SEARCH 3
-SEARCH 4
-SEARCH 5
-SEARCH 6
-SEARCH 7
-SEARCH 8
-SEARCH 9
+9
+Alexei Peter_I
+Anna Peter_I
+Elizabeth Peter_I
+Peter_II Alexei
+Peter_III Anna
+Paul_I Peter_III
+Alexander_I Paul_I
+Nicholaus_I Paul_I
