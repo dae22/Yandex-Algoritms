@@ -14,6 +14,19 @@ def tree_add(tree):
     return tree
 
 
+def LCA(tree, req, d=0):
+    if len(tree) > 1:
+        for i in range(1, len(tree)):
+            x = LCA(tree[i], req)
+            if x < 2:
+                d += x
+    if tree[0]in req:
+        d += 1
+    if d == 2:
+        print(tree[0])
+    return d
+
+
 with open('input.txt', 'r') as f:
     n = int(f.readline().strip())
     data = [f.readline().strip().split() for _ in range(n-1)]
@@ -42,4 +55,5 @@ for el in mid[FATHER]:
 del mid[FATHER]
 
 tree_add(tree)
-print(tree)
+for el in req:
+    LCA(tree, el)
