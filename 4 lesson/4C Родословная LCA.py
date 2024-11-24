@@ -1,4 +1,5 @@
 import sys
+import time
 
 sys.setrecursionlimit(100000)
 
@@ -72,9 +73,12 @@ for el in mid[FATHER]:
 del mid[FATHER]
 
 tree_add(tree)
+s = time.time()
 for req in req:
     flag = False
     if req[0] == req[1]:
         print(req[0])
     else:
         LCA(tree)
+f = time.time()
+print(f-s)
