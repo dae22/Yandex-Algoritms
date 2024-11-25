@@ -2,13 +2,12 @@ from collections import defaultdict
 import sys, time
 
 def add_el(tree):
-    if tree[0] == a:
-        tree.append([b])
-        return True
+    if tree[0] in mid:
+        tree.extend(mid[tree[0]])
+        del mid[tree[0]]
     for i in range(1, len(tree)):
-        if add_el(tree[i]):
-            return True
-    return False
+        add_el(tree[i])
+    return tree
 
 
 def money(tree, m=0):
@@ -29,10 +28,14 @@ with open('input.txt', 'r') as f:
     n = int(f.readline().strip())
     data = list(enumerate(map(int, f.readline().strip().split()), 2))
 
+mid = defaultdict(list)
+for b, a in data:
+    mid[a].append([b])
+del data
+
 s = time.time()
 tree = [1]
-for b, a in data:
-    add_el(tree)
+add_el(tree)
 print(f'дерево: {time.time() - s}')
 
 s = time.time()
