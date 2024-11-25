@@ -1,5 +1,5 @@
 from collections import defaultdict
-import sys, time
+import sys
 
 def add_el(tree):
     if tree[0] in mid:
@@ -10,20 +10,19 @@ def add_el(tree):
     return tree
 
 
-def money(tree, m=0):
-    if None in tree:
-        del tree[tree.index(None)]
-    if len(tree) == 1:
-        m += 1
-        fnl[tree[0]] += m
-    else:
-        m += (1 + money(tree[1]))
-        fnl[tree[0]] += m
-        if len(tree[1]) == 1:
-            tree[1] = None
-    return m
+def money(tree, m=0, q=0):
+    if len(tree) > 1:
+        for i in range(1, len(tree)):
+            x, y = money(tree[i])
+            m += (x + y)
+            q += y
+    m += 1
+    q += 1
+    fnl[tree[0]] = m
+    return (m, q)
 
-sys.setrecursionlimit(100000)
+
+sys.setrecursionlimit(1000000)
 with open('input.txt', 'r') as f:
     n = int(f.readline().strip())
     data = list(enumerate(map(int, f.readline().strip().split()), 2))
@@ -33,16 +32,11 @@ for b, a in data:
     mid[a].append([b])
 del data
 
-s = time.time()
 tree = [1]
 add_el(tree)
-print(f'дерево: {time.time() - s}')
 
-s = time.time()
 fnl = defaultdict(int)
-for i in range(n):
-    money(tree)
-print(f'бюрократия: {time.time() - s}')
+money(tree)
 
 for a, b in sorted(fnl.items()):
     print(b, end=' ')
