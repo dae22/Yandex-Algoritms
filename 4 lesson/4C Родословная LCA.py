@@ -43,14 +43,14 @@ for s, f in data:
         mid[f] = [s]
 del data
 
-son = []
+sons = []
 for el in mid.values():
-    son.extend(el)
+    sons.extend(el)
 for el in mid.keys():
-    if el not in son:
+    if el not in sons:
         FATHER = el
         break
-del son
+del sons
 tree = [FATHER]
 for el in mid[FATHER]:
     tree.append([el])
