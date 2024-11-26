@@ -15,18 +15,22 @@ def tree_add(tree):
     return tree
 
 
-def LCA(tree, d=0):
-    for i in range(1, len(tree)):
-        x = LCA(tree[i])
-        if x[1]:
-            return (0, True)
-        d += x[0]
-    if tree[0] == a: d += 1
-    if tree[0] == b: d += 1
-    if d == 2:
-        print(tree[0])
-        return (0, True)
-    return (d, False)
+def elder_search(tree, stack=[]):
+    stack.append(tree[0])
+    all_eld[tree[0]] = stack.copy()
+    if len(tree) > 1:
+        for i in range(1, len(tree)):
+            elder_search(tree[i], stack)
+    stack.pop()
+    return
+
+def LCA(a, b):
+    eld_a = list(reversed(all_eld[a]))
+    eld_b = list(reversed(all_eld[b]))
+    for i in range(len(eld_a)):
+        if eld_a[i] in eld_b:
+            print(eld_a[i])
+            break
 
 
 with open('input.txt', 'r') as f:
@@ -34,7 +38,6 @@ with open('input.txt', 'r') as f:
     data = [f.readline().strip().split() for _ in range(n-1)]
     req = [tuple(el.strip().split()) for el in f.readlines()]
 
-start = time.time()
 mid = dict()
 for s, f in data:
     if f in mid:
@@ -57,17 +60,13 @@ for el in mid[FATHER]:
 del mid[FATHER]
 
 tree_add(tree)
-print(f'дерево: {time.time() - start}')
-
 
 s = time.time()
-memo = dict()
+all_eld = dict()
+elder_search(tree)
+
 for a, b in req:
-    # if (a, b) in memo:
-    #     print(memo[(a, b)])
     if a == b:
         print(a)
     else:
-        LCA(tree)
-f = time.time()
-print(f-s)
+        LCA(a, b)
