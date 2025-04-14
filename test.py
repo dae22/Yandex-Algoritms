@@ -1,7 +1,2 @@
-def longest_way(street):
-    max_way = -1
-    r = 0
-    for l in range(len(street)):
-        while r < len(street) and street[r] != 1:
-            r += 1
-
+cost = list(map(int,'52 10 41 69 82 5 21 18 39 48 87 15 82 66 67 18 84 71 94 82 67 73 67 90 67 85 68 25 3 65 55 95 56 21 91 58 90 65 43 59 83 35 73 95 60 43 27 92 38 86 58 25 10 30 65 33 77 58 32 2 37 89 56 47 5 13 95 75 94 59 72 2 25 43 49 9 60 19 2 69 90 61 7 71 36 40 38 23 45 35 39 6'.split()))
+print(sum(cost))
